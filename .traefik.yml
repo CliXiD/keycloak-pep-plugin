@@ -1,0 +1,15 @@
+# Traefik plugin configuration
+displayName: "Keycloak Policy Enforcer"
+type: middleware
+import: github.com/CliXiD/keycloak-pep-plugin
+summary: "Keycloak Policy Enforcement Point (PEP) middleware for Traefik"
+testData:
+  keycloak:
+    server_url: "http://localhost:8080"
+    realm: "test-realm"
+    client_id: "test-client"
+  enforcement_mode: "ENFORCING"
+  paths:
+    - path: "/api/admin/*"
+      methods: ["GET", "POST"]
+      scopes: ["admin:read"]
